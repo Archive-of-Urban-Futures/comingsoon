@@ -267,9 +267,9 @@ input { display: inline; }
     width: 100%;
   }
 </style>
-<input type="button" onClick="document.getElementById('about').scrollIntoView();" />
+<button onClick="document.getElementById('about').scrollIntoView();"> About </button>
 <h1>The Archive of Urban Futures</h1>
-<div class="external">
+<div class="external" id="photos">
 
   <div class="horizontal-scroll-wrapper">
     <div class="img-wrapper slower" >
@@ -356,8 +356,8 @@ input { display: inline; }
 <p>
     &emsp; If you have questions or would like to contribute to the Archive of Urban Futures, please complete the form below.
 </p>
+<button onClick="document.getElementById('photos').scrollIntoView();"> View Gallery </button>
 <div style="text-align: center;">
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeCBGg9NO4TZEUnvRDzPwzJqK9SoV-Hta4zvinm3f7H4rweIQ/viewform?embedded=true" width="640" height="689" frameborder="0" marginheight="0" marginwidth="0" scrolling="no">Loading…</iframe>
 </div>
 <hr>
 <!-- The Modal -->
