@@ -11,6 +11,11 @@ body {
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'Epilogue';
+    src: url('Epilogue/Epilogue-VariableFont_wght.ttf') format('truetype');
+}
+
 /* hide scrollbar */
 ::-webkit-scrollbar {
   width: 1px;
@@ -127,8 +132,8 @@ a:hover img {
 }
 
 p {
-  margin: 40px 120px 40px 120px;
-  font-size: 30px;
+  margin: 10px 120px 20px 120px;
+  font-size: 25px;
   font-weight: 100;
   word-spacing: 2.6px;
 }
@@ -262,6 +267,7 @@ input { display: inline; }
     width: 100%;
   }
 </style>
+<input type="button" onClick="document.getElementById('about').scrollIntoView();" />
 <h1>The Archive of Urban Futures</h1>
 <div class="external">
 
@@ -335,7 +341,7 @@ input { display: inline; }
     </div>
   </div>
 </div>
-<p>
+<p id="about">
     &emsp; The Archive of Urban Futures is a collaborative project between Moms 4 Housing and a team of UC Berkeley researchers, led by Dr. Brandi Summers. 
 </p>
 <p>
