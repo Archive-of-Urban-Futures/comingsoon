@@ -1,7 +1,7 @@
   /* Inspired by this pen by Pieter Biesemans https://codepen.io/pieter-biesemans/pen/BQBWXX and My Mother Before Me project http://mymotherbeforeme.com/ */
 
 body {
-  font-family: Hepta Slab, sans-serif;
+  font-family: Epilogue;
   font-weight: 500;
   background: #efecdb;
   color: #5D4037;
@@ -11,8 +11,8 @@ body {
 }
 
 @font-face {
-  font-family: 'Epilogue';
-    src: url('Epilogue/Epilogue-VariableFont_wght.ttf') format('truetype');
+  font-family: Epilogue;
+    src: url('./Epilogue/Epilogue-VariableFont_wght.ttf') format('truetype');
 }
 
 /* hide scrollbar */
@@ -131,10 +131,13 @@ a:hover img {
 }
 
 p {
-  margin: 10px 120px 20px 120px;
-  font-size: 25px;
-  font-weight: 100;
+  margin: 10px 160px 20px 160px;
+  font-size: 24px;
+  font-weight: medium;
   word-spacing: 2.6px;
+  line-height: 125%;
+  letter-spacing: -1.5%;
+  text-align: justify;
 }
 .scroll-info {
   display: flex;

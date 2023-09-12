@@ -1,6 +1,7 @@
 <head>
   <link rel="stylesheet" href="style.css">
 </head>
+<script type="text/javascript" src="data.json"></script>
 <script src="script.js"></script>
 <body onload = "onload()">
 
@@ -21,7 +22,6 @@
         Owners’ Loan Corporation (HOLC) used these descriptions with color-coded “redlining”
         maps to determine mortgage lending risk.">
     </div>
-
 
     <div class="img-wrapper">
         <img class="myImg" src="assets/img/B38-min.jpg" alt="During the late 1930s, the Home
@@ -44,7 +44,7 @@
     </div>
 
     <div class="img-wrapper slower slower2">
-        <img class="myImg" src="assets/img/eminentdomain-min.jpg" alt="there are no placeholdder captions-- captions are maintained by hand">
+        <img class="myImg" src="assets/img/eminentdomain.jpg" alt="">
     </div>
 
     <div class="img-wrapper faster">
@@ -60,33 +60,32 @@
     </div>
   </div>
 </div>
-<p id="about">
-    &emsp; The Archive of Urban Futures is a collaborative project between Moms 4 Housing and a team of UC Berkeley researchers, led by Dr. Brandi Summers. 
+<p>
+    The Archive of Urban Futures is a collaborative project between Moms 4 Housing and a team of UC Berkeley researchers, led by Dr. Brandi Summers. 
 </p>
 <p>
-    &emsp; Organized by three themes: "The Afterlife of Urban Renewal," "The Living Archive," and "Reclaim and Remain," this project documents Black Oakland’s history and how it has changed over time, as well as efforts to produce new worlds and urban futures.
+    Organized by three themes: <em>"The Afterlife of Urban Renewal," "The Living Archive,"</em> and <em>"Reclaim and Remain," </em> this project documents Black Oakland’s history and how it has changed over time, as well as efforts to produce new worlds and urban futures.
 </p>
 <p>
-    &emsp; The Archive addresses questions about the right to place, memory, erasure, and community value, by focusing on the meaning of place as we cultivate ways for Black Oakland residents, both past and present, to reinsert themselves into the urban landscape from where they have been displaced.
+    The Archive addresses questions about the right to place, memory, erasure, and community value, by focusing on the meaning of place as we cultivate ways for Black Oakland residents, both past and present, to reinsert themselves into the urban landscape from where they have been displaced.
 </p>
 <p>
-    &emsp; The Archive of Urban Futures has been generously funded by a grant from the Mellon Foundation's Humanities in Place program.
+    The Archive of Urban Futures has been generously funded by a grant from the Mellon Foundation's Humanities in Place program.
 </p>
 <p>
-    &emsp; If you have questions or would like to contribute to the Archive of Urban Futures, please complete the form below.
+    If you have questions or would like to contribute to the Archive of Urban Futures, please complete <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCBGg9NO4TZEUnvRDzPwzJqK9SoV-Hta4zvinm3f7H4rweIQ/viewform?embedded=true" target="blank"> this form </a>.
 </p>
 
-<div style="text-align: center;">
-</div>
 <hr>
 <!-- The Modal -->
 <div id="myModal" class=" modal">
-  <p class="title">Resource Title</p>
+  <p class="title" id="title_text"></p>
+  <p class="location" id="location_tag"></p>
   <hr class ="modal-separator">
   <span class="close">&times;</span>
   <img id="img01" class="modal-content">
-  <p class="date">date</p>
+  <p class="date" id="date_tag"></p>
   <div id="caption"></div>
-  <p class="tag">tag</p>
+  <p class="tag" id="tag"></p>
 </div>
 <body>
