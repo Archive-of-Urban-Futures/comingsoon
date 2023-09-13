@@ -122,7 +122,6 @@ img {
   max-width: 75vh;
   max-height: 70vh;
   transition: .5s;
-  vertical-align: top;
   filter: saturate(40%) sepia(30%) hue-rotate(5deg);
 }
 
@@ -172,8 +171,7 @@ input { display: inline; }
 
 /* Modal Content (image) */
 .modal-content {
-  margin: auto;
-  display: block;
+  float: left;
   width: 80%;
   max-height: 500px;
   width: auto;
@@ -181,11 +179,9 @@ input { display: inline; }
 
 /* Caption of Modal Image */
 #caption {
-  display: block;
   width: 80%;
   max-width: 500px;
   color: rgb(0,0,0);
-  margin-left: 125px;
 }
 
 /* Add Animation */
@@ -230,16 +226,13 @@ input { display: inline; }
 .title {
   font-weight: 480;
   font-size: 30px;
-  text-align: center;
   color: rgb(0,0,0);
 }
 
 .location {
   font-weight: 600;
   font-size: 70px;
-  text-align: center;
   font-size: 20px;
-  text-align: center;
   background: rgb(97,105,106);
   border-radius: 6px;
   color: rgb(255,255,255);
@@ -270,3 +263,19 @@ input { display: inline; }
   .modal-content {
     width: 100%;
   }
+
+.modal--active .content {
+  -webkit-filter: blur(8px);
+          filter: blur(8px);
+  opacity: 1;
+}
+
+.content {
+  -webkit-filter: blur(0);
+          filter: blur(0);
+  opacity: 1;
+  -webkit-transition: opacity 500ms ease, -webkit-filter 500ms ease;
+  transition: opacity 500ms ease, -webkit-filter 500ms ease;
+  transition: filter 500ms ease, opacity 500ms ease;
+  transition: filter 500ms ease, opacity 500ms ease, -webkit-filter 500ms ease;
+}

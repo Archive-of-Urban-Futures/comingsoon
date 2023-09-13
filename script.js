@@ -1,5 +1,7 @@
+
 //TODO (svouse): clean up onload
 function onload() {
+  /*
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -23,28 +25,11 @@ for (i = 0; i < img.length; i++) {
     modal.style.display = "block";
     modalImg.src = this.src;
     captionText.innerHTML = this.alt;
-    var title = test[i];
-  console.log(title);
-    titleText.innerHTML = test[i];
+    titleText.innerHTML = this.alt;
   }
 }
-/*
-for (i = 0; i < img.length; i++) { 
- tags = jsonData[i].tags;
-  title = jsonData[i].title;
-    location = jsonData[i].location;
-    date = jsonData[i].date;
-  img[i].onclick = function(){
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    titleText.innerHTML = title;
-    locationText.innerHTML = location;
-    dateText.innerHTML = date;
-    captionText.innerHTML = this.alt;
-    tagText.innerHTML = tags;
-  }
-}
-*/
+
+
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -53,5 +38,5 @@ var span = document.getElementsByClassName("close")[0];
 span.onclick = function() { 
   modal.style.display = "none";
 }
-console.log(JSON.stringify(data));
-}
+*/
+} 
