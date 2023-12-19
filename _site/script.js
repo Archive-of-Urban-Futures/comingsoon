@@ -1,7 +1,6 @@
 
 //TODO (svouse): clean up onload
 function onload() {
-  /*
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -19,16 +18,44 @@ var dateText = document.getElementById("date_tag");
 var captionText = document.getElementById("caption");
 var tagText = document.getElementById("tag");
 
-var test = ["test", "duck", "three", "test", "duck", "three", "test", "duck", "three", "test", "duck", "three"];
+// Get the modal arrows
+var frontArrow = document.getElementById("frontArrow");
+var backArrow = document.getElementById("backArrow");
+
+//set modal content 
 for (i = 0; i < img.length; i++) { 
-  img[i].onclick = function(){
+  var onclick = function(){
     modal.style.display = "block";
     modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
-    titleText.innerHTML = this.alt;
+    var data= this.alt.split("|");
+    titleText.innerHTML = data[0];
+    locationText.innerHTML = data[1];
+    dateText.innerHTML = data[2];
+    captionText.innerHTML = data[3];
+    tagText.innerHTML = data[4].split(",")[0];
   }
+
+  img[i].onclick = onclick;
 }
 
+/*
+//set modal arrow destinations
+for (i = 0; i < img.length; i++) { 
+  //if image is first, back arrow wraps
+  if(i == 0) {
+    backArrow.onclick = function(){img[img.length-1].click()};
+    frontArrow.onclick = function(){img[i+1].click()};
+  }
+  //if image is last, front arrow wraps
+  else if(i == img.length -1) {
+    backArrow.onclick = function(){img[i-1].click()};
+    frontArrow.onclick = function(){img[i+1].click()};
+  }
+   else {
+    backArrow.onclick = function(){img[i-1].click()};
+    frontArrow.onclick = function(){img[i+1].click()};
+  }
+}*/
 
 
 // Get the <span> element that closes the modal
@@ -38,5 +65,4 @@ var span = document.getElementsByClassName("close")[0];
 span.onclick = function() { 
   modal.style.display = "none";
 }
-*/
 } 

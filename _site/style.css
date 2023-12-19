@@ -10,6 +10,52 @@ body {
   box-sizing: border-box;
 }
 
+.reclaim {
+  background: #0A0B0B;
+  color: #efecdb;
+}
+
+.reclaim-image {
+  margin: auto;
+  width: 50%;
+}
+
+.headings {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.headings a {
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 2rem;
+  margin: 30px;
+}
+
+.headings :hover {
+    color: #B75C42;
+  }
+
+.title {
+  text-align: center;
+  width: 100%;
+}
+
+.title a {
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 4.3rem;
+  margin-bottom: 10px;
+}
+
+.title :hover {
+  color: #B75C42;
+}
+
+.current-tab {
+  color: #B75C42;
+}
+
 @font-face {
   font-family: Epilogue;
     src: url('./Epilogue/Epilogue-VariableFont_wght.ttf') format('truetype');
@@ -91,6 +137,30 @@ body {
   left: 1rem;
 }
 
+.video-content {
+  width: 100%;
+}
+
+
+.text-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1.5s ease-out;
+  font-size: 24px;
+  font-weight: medium;
+  word-spacing: 2.6px;
+  line-height: 3rem;
+  letter-spacing: -1.5%;
+}
+
+.text-section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section {
+  padding: 50px;
+}
 
 header {
   bottom: 1rem;
@@ -125,11 +195,11 @@ img {
   filter: saturate(40%) sepia(30%) hue-rotate(5deg);
 }
 
-a:hover img {
+img:hover {
   filter: none;
 }
 
-p {
+.description {
   margin: 10px 160px 20px 160px;
   font-size: 24px;
   font-weight: medium;
@@ -137,6 +207,11 @@ p {
   line-height: 125%;
   letter-spacing: -1.5%;
   text-align: justify;
+}
+
+.description a {
+  color: inherit;
+  font-weight: 500;
 }
 .scroll-info {
   display: flex;
@@ -160,28 +235,37 @@ input { display: inline; }
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  left: 25%;
+  left: 18%;
   top: 10%;
-  width: 60%;
-  height: 85%;
+  width: 1000px;
+  max-height: 65%;
+  min-height:55%;
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgb(255,255,255); /* White */
+  padding-right: 30px;
 }
 
 /* Modal Content (image) */
 .modal-content {
   float: left;
-  width: 80%;
+  width: 100%;
   max-height: 500px;
   width: auto;
 }
 
+#img01 {
+  margin: 30px;
+  filter: none;
+  max-width: 500px;
+}
+
 /* Caption of Modal Image */
 #caption {
-  width: 80%;
-  max-width: 500px;
+  width: 100%;
+  max-width: 1000px;
   color: rgb(0,0,0);
+  margin-top: 80px;
 }
 
 /* Add Animation */
@@ -190,7 +274,6 @@ input { display: inline; }
   -webkit-animation-duration: 0.6s;
   animation-name: zoom;
   animation-duration: 0.6s;
-  margin-bottom: 50px;
 }
 
 /* removing zoom for now
@@ -224,34 +307,43 @@ input { display: inline; }
 }
 
 .title {
-  font-weight: 480;
-  font-size: 30px;
-  color: rgb(0,0,0);
+  word-spacing: normal;
+  font-weight: 780;
+  font-size: 50px;
+  color: #3C1D14;
+  margin-top: 50px;
 }
 
 .location {
   font-weight: 600;
   font-size: 70px;
   font-size: 20px;
-  background: rgb(97,105,106);
+  background: #B75C42;
   border-radius: 6px;
   color: rgb(255,255,255);
+  max-width: 200px;
+  float: left;
+  margin: 0px 10px 0px 10px;
+  padding: 5px 10px;
 }
 
 .date {
-  font-weight: 400;
+  font-weight: 600;
   font-size: 20px;
-  color: rgb(97,105,106);
+  color: #3C1D14;
+  padding: 5px 10px;
 }
 
 .tag {
   font-size: 20px;
   font-weight: 400;
-  width: max-content;
-  background: rgb(0,0,0);
+  max-width: 600px;
+  background: #3C1D14;
   border-radius: 6px;
   color: rgb(255,255,255);
+  margin: 10px;
   padding: 5px;
+  float: left;
 }
 
 .modal-separator {
