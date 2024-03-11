@@ -191,7 +191,7 @@ img {
   max-width: 75vh;
   max-height: 70vh;
   transition: .5s;
-  filter: saturate(40%) sepia(100%) hue-rotate(8deg);
+  filter: saturate(20%) sepia(40%) hue-rotate(8deg);
 }
 
 img:hover {
@@ -227,6 +227,7 @@ input { display: inline; }
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
+  filter: saturate(40%) sepia(60%) hue-rotate(8deg);
 }
 
 .backing {
