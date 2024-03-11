@@ -191,7 +191,7 @@ img {
   max-width: 75vh;
   max-height: 70vh;
   transition: .5s;
-  filter: saturate(40%) sepia(10%) hue-rotate(5deg);
+  filter: saturate(40%) sepia(100%) hue-rotate(8deg);
 }
 
 img:hover {
