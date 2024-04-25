@@ -190,17 +190,6 @@ h1 {
   background: #efecdb;
 }
 
-img {
-  max-width: 75vh;
-  max-height: 70vh;
-  transition: .5s;
-  filter: saturate(20%) sepia(40%) hue-rotate(8deg);
-}
-
-img:hover {
-  filter: none;
-}
-
 .description {
   margin: 10px 160px 20px 160px;
   font-size: 24px;
@@ -232,20 +221,49 @@ input { display: inline; }
   z-index: 9000;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 101vw;
   height: 100vh;
-  background-size: 63% auto;
-  background-repeat: no-repeat;
-  background-position: 10% 50%;
   background-color: black;
-  border: 10px solid rgba(243, 193, 21, .60);
+  border-top: 10px solid rgba(243, 193, 21, .60);
+  border-bottom: 10px solid rgba(243, 193, 21, .60);
+  animation: fadeIn .5s;
+}
+
+.img01 {
+  position: absolute;
+  left: 36%; /* If this aligns with `#fullpage` */
+  top: 50%; /* Centered vertically within `#fullpage` */
+  transform: translate(-50%, -50%); /* Center `img01` horizontally and vertically */
+  max-height: 80vh;
+  max-width: 70vw;
+}
+
+.glass {
+  backdrop-filter: contrast(130%) brightness(120%) blur(2px);
+  background: rgba(255, 36, 61, 0.4);
+  border-radius: 10px;
+}
+
+.frame {
+  padding: 20px;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .myImg {
   border-radius: 5px;
   cursor: pointer;
-  transition: 0.3s;
-  filter: saturate(40%) sepia(60%) hue-rotate(8deg);
+  max-width: 75vh;
+  max-height: 70vh;
+  transition: .5s;
+  filter: saturate(20%) sepia(40%) hue-rotate(8deg);
+}
+
+.myImg:hover {
+  filter: none;
 }
 
 .backing {
@@ -260,12 +278,6 @@ input { display: inline; }
   margin: 2% 5% 0 0;
   width: 23%;
   max-height: 400px;
-}
-
-#img01 {
-  margin: 30px;
-  filter: none;
-  max-width: 500px;
 }
 
 /* Caption of Modal Image */
@@ -390,4 +402,10 @@ input { display: inline; }
   transition: opacity 500ms ease, -webkit-filter 500ms ease;
   transition: filter 500ms ease, opacity 500ms ease;
   transition: filter 500ms ease, opacity 500ms ease, -webkit-filter 500ms ease;
+}
+
+* {box-sizing: border-box;}
+
+.img-magnifier-container {
+   position: relative;
 }
