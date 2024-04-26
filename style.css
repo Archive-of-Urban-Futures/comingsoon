@@ -24,6 +24,19 @@ body {
   text-align: center;
 }
 
+img {
+   max-width: 75vh;
+   max-height: 70vh;
+ }
+
+
+.where {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 8rem;
+  font-weight: 700;
+}
+
 .headings a {
   text-decoration: none;
   font-weight: 900;
@@ -198,6 +211,11 @@ h1 {
   line-height: 125%;
   letter-spacing: -1.5%;
   text-align: justify;
+}
+
+.living-text {
+  margin: 10px 100px 70px 100px;
+  line-height: 155%;
 }
 
 .description a {
