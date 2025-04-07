@@ -7,8 +7,11 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
+    base64 (0.2.0)
+    bigdecimal (3.1.9)
     colorator (1.1.0)
     concurrent-ruby (1.2.3)
+    csv (3.3.2)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
@@ -88,6 +91,9 @@ PLATFORMS
   universal-darwin-23
 
 DEPENDENCIES
+  base64
+  bigdecimal
+  csv
   jekyll (~> 4.0.0)
   jekyll-babel
   jekyll-sitemap

@@ -1,0 +1,276 @@
+<!-- Filing Cabinet Style Breadcrumb Timeline UI (fixed 3-tab breadcrumb, progressive reveal) -->
+<div class="breadcrumb-wrapper">
+  <div class="breadcrumb-timeline" id="breadcrumb">
+    <div class="folder-tab" data-level="0" id="tab-timeline"><span>Timeline</span></div>
+  </div>
+</div>
+
+<div id="breadcrumb-content" class="breadcrumb-content">
+  <!-- JS injects dynamic content here -->
+</div>
+<link rel="stylesheet" href="style.css"/>
+
+<style>
+  .breadcrumb-wrapper {
+    padding: 1rem;
+    border-bottom: 3px solid #999;
+  }
+
+  .breadcrumb-timeline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .folder-tab {
+    position: relative;
+    border: 2px solid #bbb;
+    padding: 0.5rem 1.25rem;
+    font-weight: bold;
+    clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 100% 100%, 0% 100%);
+    text-align: left;
+    white-space: nowrap;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  .folder-tab:hover {
+    background: #B75C42;
+    transform: translateY(-3px);
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  .folder-tab[data-level="1"] {
+    margin-left: 1.5rem;
+  }
+  .folder-tab[data-level="2"] {
+    margin-left: 3rem;
+  }
+
+  .breadcrumb-content {
+    padding: 1rem;
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.6;
+  }
+
+  .timeline-era-list {
+    display: flex;
+    gap: 3rem;
+    padding: 2rem 1rem;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+
+  .timeline-era {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s ease;
+  }
+
+  .timeline-era::after {
+    content: '';
+    position: absolute;
+    left: 40%;
+    top: 100%;
+    width: 6px;
+    height: 60px;
+    background: #222;
+    transition: height 0.3s ease;
+  }
+
+  .timeline-era:hover {
+    color: #B75C42;
+  }
+
+  .timeline-era::after {
+    background: #cc2a00;
+  }
+
+  .timeline-era:hover::after {
+    height: 30px;
+  }
+
+  @media (max-width: 600px) {
+    .folder-tab {
+      clip-path: none;
+      padding: 0.5rem;
+    }
+    .folder-tab[data-level="1"] {
+      margin-left: 0.5rem;
+    }
+    .folder-tab[data-level="2"] {
+      margin-left: 1rem;
+    }
+    .timeline-era-list {
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .timeline-era {
+      font-size: 1.5rem;
+    }
+  }
+
+  .population-card {
+    background: rgba(243, 193, 21, 0.9);
+    color: #3C1D14;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: 4px 4px 0 #B75C42;
+    max-width: 600px;
+    font-family: Epilogue, sans-serif;
+  }
+
+  .timeline-events {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .timeline-event {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 8px solid #B75C42;
+    border-radius: 8px;
+    font-family: Epilogue, sans-serif;
+  }
+
+  .timeline-event img {
+    max-width: 150px;
+    border-radius: 8px;
+    filter: saturate(60%) sepia(20%);
+  }
+
+  .timeline-event h3 {
+    margin: 0 0 0.5rem;
+    color: #F3C115;
+  }
+
+  .timeline-event p {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .era-heading {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #CB2703; /* same red as the timeline lines */
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+
+</style>
+
+<script>
+  const contentMap = {
+    "timeline": `<h2>Select an era to continue.</h2><div class='timeline-era-list'>
+      <div class='timeline-era' onclick="selectEra('1930s')">1930s</div>
+      <div class='timeline-era' onclick="selectEra('1940s')">1940s</div>
+      <div class='timeline-era' onclick="selectEra('1950s')">1950s</div>
+      <div class='timeline-era' onclick="selectEra('1960s')">1960s</div>
+      <div class='timeline-era' onclick="selectEra('1970s')">1970s</div>
+      <div class='timeline-era' onclick="selectEra('1980s')">1980s</div>
+      <div class='timeline-era' onclick="selectEra('1990s')">1990s</div>
+      <div class='timeline-era' onclick="selectEra('2000s')">2000s</div>
+    </div>`,
+    "1930s": `<h2 class="era-heading">1930s</h2><p>Population: [insert stats]</p><p>No events yet.</p>`,
+
+      "1940s": `<h2 class="era-heading">1940s</h2><div><strong>Population:</strong> 1940: White: 287,036; Black: 8,462</div>
+        <ul><li><a href="#" onclick="selectEvent('wartime-housing')">Wartime Housing (1941–1943)</a></li>
+        <li><a href="#" onclick="selectEvent('black-recruitment')">Recruitment of Black Southerners (1942)</a></li></ul>`,
+
+      "1950s": `<h2 class="era-heading">1950s</h2><div><strong>Population:</strong> 1950: White: 328,797; Black: 47,562</div>
+        <ul><li><a href="#" onclick="selectEvent('industrial-base')">Oakland Industrial Base</a></li>
+        <li><a href="#" onclick="selectEvent('occur')">OCCUR Urban Renewal Plans (1957)</a></li></ul>`,
+
+      "1960s": `<h2 class="era-heading">1960s</h2><div><strong>Population:</strong> 1960: White: 270,523; Black: 83,618</div>
+        <ul><li><a href="#" onclick="selectEvent('railroad-terminus')">Railroad Terminus Leaves West Oakland (1960)</a></li>
+        <li><a href="#" onclick="selectEvent('bpp')">Black Panther Party Formed (1966)</a></li>
+        <li><a href="#" onclick="selectEvent('acorn-project')">Acorn Project Begins (1962)</a></li></ul>`,
+
+      "1970s": `<h2 class="era-heading">1970s</h2><div><strong>Population:</strong> 1970: White: 361,561; Black: 213,512</div>
+        <ul><li><a href="#" onclick="selectEvent('oak-center')">Oak Center Urban Renewal (1967)</a></li></ul>`,
+
+      "1980s": `<h2 class="era-heading">1980s</h2><div><strong>Population:</strong> 1980: White: 131,127; Black: 159,351</div>
+        <ul><li><a href="#" onclick="selectEvent('bart')">BART Completed</a></li>
+        <li><a href="#" onclick="selectEvent('proposition-13')">Proposition 13 (1978)</a></li></ul>`,
+
+      "1990s": `<h2 class="era-heading">1990s</h2><div><strong>Population:</strong> 1990: White: 120,849; Black: 163,335</div>
+        <ul><li><a href="#" onclick="selectEvent('three-strikes')">Three Strikes Law (1994)</a></li></ul>`,
+
+      "2000s": `<h2 class="era-heading">2000s</h2><p>No population stats available.</p>
+        <ul><li><a href="#" onclick="selectEvent('foreclosure-crisis')">Foreclosure Crisis (2007–2008)</a></li></ul>`,
+
+    "wartime-housing": `<h2>Wartime Housing (1941-1943)</h2><p>West Oakland became overcrowded as Black migrants arrived and were crammed into large homes. Oakland Housing Authority projects were built (Campbell Village, Peralta Villa, Bayview Villa, Cypress Village, etc.). Whites refused to sell to Black residents.</p>`,
+    "black-recruitment": `<h2>Recruitment of Black Southerners (1942)</h2><p>Henry Kaiser and others recruited half a million Black Southerners to West Oakland for wartime defense industry jobs. Boilermakers Union auxiliary met at 1315 7th St. Black population: 8,462 (1940) → 37,327 (1945).</p>`,
+    "industrial-base": `<h2>Oakland Industrial Base (1950s)</h2><p>High unemployment for non-white residents, especially women. Younger Black population gained more blue-collar jobs. Job segregation and racial pay gaps persisted. Women entered food processing manufacturing jobs.</p>`,
+    "occur": `<h2>OCCUR Urban Renewal Plans (1957)</h2><p>Oakland approved a plan to redevelop West Oakland, targeting 225 acres. Plans led to displacement of residents for freeway and housing construction (e.g. Acorn Project).</p>`,
+    "railroad-terminus": `<h2>Railroad Terminus Leaves West Oakland (1960)</h2><p>Service rerouted to 16th St. station. 1/2 of West Oakland residents lived in poverty; 60% of unemployed were Black.</p>`,
+    "bpp": `<h2>Black Panther Party Formed (1966)</h2><p>Formed in response to unemployment and systemic racism. Advocated community self-defense and civilian review boards. Helped shift economic development to include Black community interests.</p>`,
+    "acorn-project": `<h2>Acorn Project Begins (1962)</h2><p>Urban renewal displaces 9,000 residents, demolishes Fannie Wall Home. Only 1,000 new units created. Area quickly resegregated. 46% of residents lived below poverty line.</p>`,
+    "oak-center": `<h2>Oak Center Urban Renewal (1967)</h2><p>Residents organized to protect neighborhood. West Oakland Planning Council formed. Post office and health center established, but more homes were destroyed in the process.</p>`,
+    "bart": `<h2>BART Completed</h2><p>Construction removed Black business districts on 7th Street. Infrastructure projects like highways and BART had negative environmental and social effects on Black neighborhoods.</p>`,
+    "proposition-13": `<h2>Proposition 13 (1978)</h2><p>Slashed public funding by capping property tax increases. Eroded funding for housing, schooling. Majority of benefits went to white homeowners with long-term property ownership.</p>`,
+    "three-strikes": `<h2>Three Strikes Law (1994)</h2><p>Mandated 25-to-life for third felony offense. Disproportionately incarcerated Black Californians (13x higher rate than whites). Contributed to community destabilization.</p>`,
+    "foreclosure-crisis": `<h2>Foreclosure Crisis (2007–2008)</h2><p>Oakland had nearly twice the national foreclosure rate. 1 in 14 homes lost. Banks acquired over 42% of foreclosed properties. Disproportionate impact on East and West Oakland's Black residents.</p>`
+  };
+
+  function renderBreadcrumb(timeline, era = null, event = null) {
+    const breadcrumb = document.getElementById('breadcrumb');
+    breadcrumb.innerHTML = '';
+
+    const tabTimeline = document.createElement('div');
+    tabTimeline.className = 'folder-tab';
+    tabTimeline.dataset.level = 0;
+    tabTimeline.innerHTML = `<span>Timeline</span>`;
+    tabTimeline.onclick = () => selectTimeline();
+    breadcrumb.appendChild(tabTimeline);
+
+    if (era) {
+      const tabEra = document.createElement('div');
+      tabEra.className = 'folder-tab';
+      tabEra.dataset.level = 1;
+      tabEra.innerHTML = `<span>${era}</span>`;
+      tabEra.onclick = () => selectEra(era);
+      breadcrumb.appendChild(tabEra);
+    }
+
+    if (event) {
+      const tabEvent = document.createElement('div');
+      tabEvent.className = 'folder-tab';
+      tabEvent.dataset.level = 2;
+      tabEvent.innerHTML = `<span>${event}</span>`;
+      tabEvent.onclick = () => selectEvent(event);
+      breadcrumb.appendChild(tabEvent);
+    }
+  }
+
+  function selectTimeline() {
+    renderBreadcrumb('Timeline');
+    document.getElementById('breadcrumb-content').innerHTML = contentMap["timeline"];
+  }
+
+  function selectEra(era) {
+    renderBreadcrumb('Timeline', era);
+    document.getElementById('breadcrumb-content').innerHTML = contentMap[era];
+  }
+
+  function selectEvent(event) {
+    const era = Object.entries(contentMap).find(([key, val]) => val.includes(`selectEvent('${event}')`))?.[0] || null;
+    renderBreadcrumb('Timeline', era, event);
+    document.getElementById('breadcrumb-content').innerHTML = contentMap[event];
+  }
+
+  selectTimeline();
+</script>

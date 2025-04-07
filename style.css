@@ -96,7 +96,7 @@ img {
   height: 1px;
 }
 .external {
-  height: 100vh;
+  height: 70vh;
 }
 
 .horizontal-scroll-wrapper {
@@ -109,10 +109,9 @@ img {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0;
-  height: 100vw;
+  max-height: 100vw;
   perspective: 1px;
   transform-style: preserve-3d;
-  padding-bottom: 10rem;
 }
 .img-wrapper {
   transform: rotate(90deg);
@@ -232,10 +231,6 @@ h1 {
 .scroll-info {
   display: flex;
   align-items: center;
-}
-
-hr {
-  border: 4px solid #CB2703;
 }
 
 input { display: inline; }
@@ -408,29 +403,129 @@ input { display: inline; }
 }
 
 /* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 700px) {
   .modal-content {
     width: 100%;
   }
 
-.modal--active .content {
-  -webkit-filter: blur(8px);
-          filter: blur(8px);
-  opacity: 1;
+  .modal--active .content {
+    -webkit-filter: blur(8px);
+    filter: blur(8px);
+    opacity: 1;
+  }
+
+  .content {
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+    -webkit-transition: opacity 500ms ease, -webkit-filter 500ms ease;
+    transition: opacity 500ms ease, -webkit-filter 500ms ease;
+    transition: filter 500ms ease, opacity 500ms ease;
+    transition: filter 500ms ease, opacity 500ms ease, -webkit-filter 500ms ease;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .img-magnifier-container {
+    position: relative;
+  }
 }
 
-.content {
-  -webkit-filter: blur(0);
-          filter: blur(0);
-  opacity: 1;
-  -webkit-transition: opacity 500ms ease, -webkit-filter 500ms ease;
-  transition: opacity 500ms ease, -webkit-filter 500ms ease;
-  transition: filter 500ms ease, opacity 500ms ease;
-  transition: filter 500ms ease, opacity 500ms ease, -webkit-filter 500ms ease;
+#timeline {
+  position: absolute;
+  top: 33%;
+  width: 100%;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Higher than the parallax gallery */
+  padding: 10px;
 }
 
-* {box-sizing: border-box;}
+#timeline-list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  overflow-x: auto;
+  max-width: 90%;
+  z-index: 1001; /* Higher than background elements */
+}
 
-.img-magnifier-container {
+.timeline-indicator {
+  top: -5px;
+  height: 5px;
+  text-align: center;
+  background: white;
+  width: 50px;
+  transition: width 0.3s ease;
+}
+
+#timeline-list li {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+#timeline-list li.active {
+  background: #ffcc00;
+  color: black;
+}
+
+ .map-fader {
    position: relative;
+   width: 100%;
+   max-width: 700px;
+   aspect-ratio: 4 / 3;
+   overflow: hidden;
+   margin-left: auto;
+   margin-right: auto;
+   display: block;
+ }
+
+.map-fader img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+  pointer-events: none;
 }
+
+.map-fader img.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.map-fader-controls {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#toggle-fade {
+  font-size: 3rem; /* Large symbol */
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: none;
+  border: none;
+}
+
+#toggle-fade:hover {
+  color: rgba(243, 193, 21, .90);
+}
+
+
